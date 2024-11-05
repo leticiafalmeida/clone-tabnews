@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu App React Simples</title>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<style>
+  /* Resetando alguns estilos padrões */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Centralizar o conteúdo na tela */
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+
+  /* Container principal */
+  #root {
+    background: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin: 20px;
+  }
+
+  /* Estilo do título */
+  h1 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+
+  /* Estilo dos botões */
+  button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 45%;
+  }
+
+  /* Estilo para o botão "SIM" */
+  button:first-child {
+    background-color: #2ecc71;
+  }
+
+  button:first-child:hover {
+    background-color: #27ae60;
+    transform: scale(1.05); /* Aumenta um pouco o botão ao passar o mouse */
+  }
+
+  /* Estilo para o botão "não" */
+  button:last-child {
+    background-color: #e74c3c;
+  }
+
+  button:last-child:hover {
+    background-color: #c0392b;
+    transform: scale(1.05); /* Aumenta um pouco o botão ao passar o mouse */
+  }
+
+  /* Estilo do parágrafo de resposta */
+  p {
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+    transition: color 0.5s ease;
+  }
+
+  .sim {
+    background-color: green;
+  }
+
+  .nao {
+    background-color: red;
+  }
+
+  /* Estilo para o confete */
+  .confete {
+    font-size: 24px;
+    color: #f39c12;
+    margin-top: 20px;
+  }
+
+  /* Estilo para a resposta inválida */
+  .resposta-invalida {
+    font-size: 18px;
+    color: #e74c3c;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  /* Media queries para responsividade */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 20px;
+    }
+
+    /* Botões maiores para telas pequenas */
+    button {
+      font-size: 14px;
+      padding: 12px;
+      width: 80%;
+    }
+
+    #root {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Títulos menores em dispositivos muito pequenos */
+    h1 {
+      font-size: 18px;
+    }
+
+    /* Botões ainda maiores para telas pequenas */
+    button {
+      font-size: 14px;
+      padding: 15px;
+      width: 90%;
+    }
+
+    #root {
+      padding: 15px;
+    }
+  }
+</style>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // Componente com estado para interatividade
+    const App = () => {
+      const [resposta, setResposta] = React.useState('');
+
+      const handleSim = () => {
+        setResposta('eu já sabia que queria!');
+      };
+
+      const handleNao = () => {
+        setResposta('resposta inválida!');
+      };
+
+      return (
+        <div>
+          <h1>Isabella, aceitas sair comigo hoje? (2 years and almost a half)</h1>
+          <button onClick={handleSim} className="sim">SIM</button>
+          <button onClick={handleNao} className="nao">não</button>
+          <p>{resposta}</p> {/* Mostra a resposta após clicar */}
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+</body>
+</html>
